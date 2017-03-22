@@ -14,9 +14,10 @@ end
 
 class Database
   attr_reader "search_name", "found"
+
   def initialize
     @person_array = []
-    @search_name = search_name
+    # @search_name = search_name
     @found = found
   end
 
@@ -83,18 +84,24 @@ class Database
   end
 end
 
+def quit_program
+  puts "Thank you for your input."
+end
+
 class Menu
   def initialize
     @database = Database.new
+    @menu = true
   end
 
   def menu_selection
-    loop do
+    while @menu == true
       puts "\nPlease type what you would like to do: "
       puts %{
         A: Add a person
         S: Search for a person
         D: Delete a person
+        Q: Quit
       }
       print ">> "
       selected = gets.chomp.downcase
@@ -105,8 +112,11 @@ class Menu
         @database.search_person
       elsif selected == "d"
         @database.delete_person
+      elsif selected == "q"
+        quit_program
+        @menu = false
       else
-        puts "Please only select: A | S | D"
+        puts "Please only select: A | S | D | Q"
       end
     end
   end
