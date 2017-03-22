@@ -13,14 +13,17 @@ class Person
 end
 
 class Database
+  attr_reader "search_name", "found"
   def initialize
     @person_array = []
+    @search_name = search_name
+    @found = found
   end
 
   def add_person
     loop do
       print "Please input a name: "
-      name = gets.chomp
+      name = gets.chomp.capitalize
 
       if name.empty?
         break
@@ -49,13 +52,30 @@ class Database
       @person_array << person
     end
 
-    @person_array.each do |person|
-      puts person.name
-    end
   end
 
   def search_person
-    puts "search"
+    found = false
+    puts "Please input the name of the person you want to search"
+    search_person = gets.chomp.capitalize
+
+    @person_array.each do |person|
+      if person.name == search_person
+        found = true
+        puts "This is #{person.name}'s information.
+        \nName: #{person.name}
+        \nPhone: #{person.phone_number}
+        \nAddress: #{person.address}
+        \nPosition: #{person.position}
+        \nSalary: #{person.salary}
+        \nSlack Account: #{person.slack_acct}
+        \nGitHub Account: #{person.github_acct}"
+      end
+    end
+
+    if found == false
+      puts "#{search_person} is not in our system.\n"
+    end
   end
 
   def delete_person
@@ -69,23 +89,25 @@ class Menu
   end
 
   def menu_selection
-    puts "Please type what you would like to do: "
-    puts %{
-      A: Add a person
-      S: Search for a person
-      D: Delete a person
-    }
-    print ">> "
-    selected = gets.chomp.downcase
+    loop do
+      puts "\nPlease type what you would like to do: "
+      puts %{
+        A: Add a person
+        S: Search for a person
+        D: Delete a person
+      }
+      print ">> "
+      selected = gets.chomp.downcase
 
-    if selected == "a"
-      @database.add_person
-    elsif selected == "s"
-      @database.search_person
-    elsif selected == "d"
-      @database.delete_person
-    else
-      puts "Please only select: A | S | D"
+      if selected == "a"
+        @database.add_person
+      elsif selected == "s"
+        @database.search_person
+      elsif selected == "d"
+        @database.delete_person
+      else
+        puts "Please only select: A | S | D"
+      end
     end
   end
 end
