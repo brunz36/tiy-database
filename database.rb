@@ -21,12 +21,14 @@ class Database
   end
 
   def add_person
-    loop do
+    found = true
+    while found == true
       print "Please input a name: "
       name = gets.chomp.capitalize
 
       if name.empty?
-        break
+        found = false
+        next
       end
 
       print "Input a phone number with area code, eg. 7278475464: "
