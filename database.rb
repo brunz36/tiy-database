@@ -17,7 +17,6 @@ class Database
 
   def initialize
     @person_array = []
-    # @search_name = search_name
     @found = found
   end
 
@@ -84,10 +83,6 @@ class Database
   end
 end
 
-def quit_program
-  puts "Thank you for your input."
-end
-
 class Menu
   def initialize
     @database = Database.new
@@ -119,6 +114,10 @@ class Menu
         puts "Please only select: A | S | D | Q"
       end
     end
+  end
+
+  def quit_program
+    puts "Thank you for your input."
   end
 end
 
