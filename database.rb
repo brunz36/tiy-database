@@ -22,7 +22,7 @@ class Database
     CSV.foreach("tiy_people.csv", headers: true) do |row|
       name = row["Name"]
       phone_number = row["Phone Number"]
-      address = row["Adress"]
+      address = row["Address"]
       position = row["Position"]
       salary = row["Salary"]
       slack_acct = row["Slack Account"]
@@ -76,7 +76,7 @@ class Database
   def search_person
     found = false
     print "Please input the name of the person you want to search: "
-    search_person = gets.chomp.capitalize
+    search_person = gets.chomp
 
     @person_array.each do |person|
       if person.name == search_person
@@ -100,7 +100,7 @@ class Database
   def delete_person
     found = false
     print "Please input the name of the person you want to delete: "
-    delete_person = gets.chomp.capitalize
+    delete_person = gets.chomp
 
     @person_array.each do |person|
       if person.name == delete_person
