@@ -99,6 +99,23 @@ class Database
     end
 
   end
+
+  def quit_program
+    puts "Thank you for your input."
+    require 'csv'
+
+    CSV.open("tiy_people.csv", "wb") do |f|
+      @person_array.each do |person|
+        f << [person.name]
+        f << [person.phone_number]
+        f << [person.address]
+        f << [person.position]
+        f << [person.salary]
+        f << [person.slack_acct]
+        f << [person.github_acct]
+      end
+    end
+  end
 end
 
 class Menu
@@ -126,7 +143,7 @@ class Menu
       elsif selected == "d"
         @database.delete_person
       elsif selected == "q"
-        quit_program
+        @database.quit_program
         @menu = false
       else
         puts "Please only select: A | S | D | Q"
@@ -134,9 +151,6 @@ class Menu
     end
   end
 
-  def quit_program
-    puts "Thank you for your input."
-  end
 end
 
 instance = Menu.new
