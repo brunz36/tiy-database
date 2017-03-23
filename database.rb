@@ -104,15 +104,9 @@ class Database
     puts "Thank you for your input."
     require 'csv'
 
-    CSV.open("tiy_people.csv", "wb") do |f|
+    CSV.open("tiy_people.csv", "w") do |row|
       @person_array.each do |person|
-        f << [person.name]
-        f << [person.phone_number]
-        f << [person.address]
-        f << [person.position]
-        f << [person.salary]
-        f << [person.slack_acct]
-        f << [person.github_acct]
+        row << [person.name, person.phone_number, person.address, person.position, person.salary, person.slack_acct, person.github_acct]
       end
     end
   end
