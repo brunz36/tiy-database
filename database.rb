@@ -58,7 +58,7 @@ class Database
 
   def search_person
     found = false
-    puts "Please input the name of the person you want to search"
+    print "Please input the name of the person you want to search: "
     search_person = gets.chomp.capitalize
 
     @person_array.each do |person|
@@ -82,20 +82,19 @@ class Database
 
   def delete_person
     found = false
-    puts "Please input the name of the person you want to delete"
+    print "Please input the name of the person you want to delete: "
     delete_person = gets.chomp.capitalize
 
     @person_array.each do |person|
-      if person.name == search_delete
+      if person.name == delete_person
         found = true
-        @person_array.pop(person)
+        @person_array.delete(person)
       end
     end
 
     if found == false
       puts "#{delete_person} is not in our system.\n"
     end
-
 
   end
 end
