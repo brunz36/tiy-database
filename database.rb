@@ -1,3 +1,5 @@
+require 'csv'
+
 class Person
   attr_reader "name", "phone_number", "address", "position", "salary", "slack_acct", "github_acct"
 
@@ -17,6 +19,19 @@ class Database
 
   def initialize
     @person_array = []
+    CSV.foreach("tiy_people.csv", headers: true) do |row|
+      name = row["Name"]
+      phone_number = row["Phone Number"]
+      address = row["Adress"]
+      position = row["Position"]
+      salary = row["Salary"]
+      slack_acct = row["Slack Account"]
+      github_acct = row["GitHub Account"]
+
+      person = Person.new(name, phone_number, address, position, salary, slack_acct, github_acct)
+
+      @person_array << person
+    end
     @found = found
   end
 
@@ -102,9 +117,9 @@ class Database
 
   def quit_program
     puts "Thank you for your input."
-    require 'csv'
 
     CSV.open("tiy_people.csv", "w") do |row|
+      row << ["Name", "Phone Number", "Address", "Position", "Salary", "Slack Account", "GitHub Account"]
       @person_array.each do |person|
         row << [person.name, person.phone_number, person.address, person.position, person.salary, person.slack_acct, person.github_acct]
       end
