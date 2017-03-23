@@ -23,7 +23,7 @@ class Database
   def add_person
     found = true
     while found == true
-      print "Please input a name: "
+      print "Please input a name, when finished leave blank: "
       name = gets.chomp.capitalize
 
       if name.empty?
@@ -48,6 +48,8 @@ class Database
 
       print "Input the GitHub account: "
       github_acct = gets.chomp
+
+      puts ""
 
       person = Person.new(name, phone_number, address, position, salary, slack_acct, github_acct)
 
@@ -76,7 +78,7 @@ class Database
     end
 
     if found == false
-      puts "#{search_person} is not in our system.\n"
+      puts "\n#{search_person} is not in our system.\n"
     end
   end
 
@@ -93,7 +95,7 @@ class Database
     end
 
     if found == false
-      puts "#{delete_person} is not in our system.\n"
+      puts "\n#{delete_person} is not in our system.\n"
     end
 
   end
