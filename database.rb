@@ -144,7 +144,6 @@ class Menu
       end
     end
   end
-
 end
 
 instance = Menu.new
