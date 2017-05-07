@@ -4,12 +4,13 @@
 ### **[The Iron Yard](http://theironyard.com)** Cohort 7 &dash; Ruby On Rails Back-End Engineer
 - This application shows the use of the following technologies:
   - Ruby
+  - CSV
 - The major features of the application are:
   - User Input
   - Data manipulation
-  - String and Integer
   - Use of methods & class
-  - Loops
+  - Using a csv file to store information
+  - Opening and closing files
 
 ## DEMO
-![](https://raw.githubusercontent.com/brunz36/nmbr/master/docs/nmbr.gif)
+![](https://raw.githubusercontent.com/brunz36/tiy-database/master/docs/tiy-database.gif)
